@@ -2,7 +2,7 @@
 
 ### Getting Started 
 
-1. `pip install streamlit`
-2. `git clone https://github.com/sports-analysis-pearlhacks2021/wta-streamlit.git`
+1. Install Streamlit: `pip install streamlit`
+2. Clone repo: `git clone https://github.com/sports-analysis-pearlhacks2021/wta-streamlit.git`
 3. `cd wta-streamlit`
-4. `streamlit run tennis.py`
+4. Run: `streamlit run tennis.py`
