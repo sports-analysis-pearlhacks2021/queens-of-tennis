@@ -136,7 +136,7 @@ def indiv_stats():
     player2_matches_wins = matches.loc[matches['winner_id'] == player_id2]
     if player_matches_wins/player_matches_all > player2_matches_wins/(player2_matches_losses+player2_matches_wins):
         st.write(player,' wins!')
-    else if player_matches_wins/player_matches_all < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+    elif (player_matches_wins/player_matches_all) < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
         st.write(player2,' wins!')
     else:
         st.write('There is an equal probability of both winning!')
