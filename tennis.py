@@ -39,9 +39,12 @@ def indiv_stats():
     num_wins = len(matches_won)
     num_losses = len(matches_lost)
 
-    st.markdown(f'## {player}')
+    st.markdown(f'## **{player}**')
+    st.subheader('Overview')
 
     col1, col2 = st.beta_columns(2)
+
+    
 
     col1.markdown(f'**Country**: {country}')
     col1.markdown(f'**DOB**: {dob}')
@@ -56,7 +59,7 @@ def indiv_stats():
     explode = (0.1, 0)  # explode 1st slice
 
     plt.pie(sizes, explode=explode, labels=labels, colors=colors,
-    autopct='%1.1f%%', shadow=True, startangle=140)
+        autopct='%1.1f%%', shadow=True, startangle=140)
 
     plt.axis('equal')
     plt.savefig('./images/pie.png')
@@ -164,13 +167,15 @@ def indiv_stats():
 
 def about():
     st.write('# About Queens of Tennis')
-    st.write('...')
+    st.write("This is a project web-app that displays a collection of Women's Tennis players' data visually. It aims to help ease an audience into consuming the information, rather than looking purely at a wall of numbers.")
+    st.write("The sports is an industry that is still largely male-dominated. Information that’s available for Women’s Sports is currently still very limited and is often only available in a format that is not user-friendly. This discourages prospective fans from learning more about the game (Gibbs, L. (2020, May 27). Sexism in statistics is hurting women's sports. Retrieved from https://www.powerplays.news/p/sexism-in-statistics-is-hurting-womens).")
+    st.write("In honor of Pearl Hacks' mission of celebrating and uplifting women, this project aims to better serve and empower women, specifically those in the sports industry.")
 
 def compare():
     st.write('# Compare Players')
 
 def main():
-    st.sidebar.title("Women's Tennis Association")
+    st.sidebar.title("Queens of Tennis")
 
     nav = ['About', 'Individual Player Stats', 'Compare Players']
     choice = st.sidebar.selectbox('Navigation', nav)
