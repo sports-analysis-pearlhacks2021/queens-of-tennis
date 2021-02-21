@@ -1,4 +1,6 @@
-# Women's Tennis Association Streamlit App
+![logo](images/logo.png)
+
+# Queens of Tennis - WTA Streamlit App
 
 ### Getting Started 
 
