@@ -129,18 +129,6 @@ def indiv_stats():
     boxplot()
     count()
 
-    st.subheader('Compare Player')
-    player2 = st.header(st.selectbox('Player Name', players['full_name']))
-    player_id2 = players.loc[players['full_name'] == player2, 'player_id'].iloc[0]
-    player2_matches_losses = matches.loc[matches['loser_id'] == player_id2]
-    player2_matches_wins = matches.loc[matches['winner_id'] == player_id2]
-    if player_matches_wins/player_matches_all > player2_matches_wins/(player2_matches_losses+player2_matches_wins):
-        st.write(player,' wins!')
-    elif (player_matches_wins/player_matches_all) < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
-        st.write(player2,' wins!')
-    else:
-        st.write('There is an equal probability of both winning!')
-
     # st.table(player_matches_all)
 
     # st.subheader('Tourneys')
@@ -148,12 +136,37 @@ def indiv_stats():
     # st.table(player_matches_tourneys)
 
 def overall_stats():
-    st.header('Overall Stats')
+    st.subheader('Compare Player')
+
+    players = pd.read_csv('./data/players.csv', encoding="ISO-8859-1")
+    matches = pd.read_csv('./data/matches.csv', encoding="ISO-8859-1")
+    
+    players['full_name'] = players['first_name'] + ' ' + players['last_name']
+    
+    player = st.selectbox('Player Name', players['full_name'])
+    player2 = st.selectbox('Player Name', players['full_name'])
+    
+    player_id = players.loc[players['full_name'] == player, 'player_id'].iloc[0]
+    player_id2 = players.loc[players['full_name'] == player2, 'player_id'].iloc[0]
+    
+    player_matches_losses = matches.loc[matches['loser_id'] == player_id]
+    player_matches_wins = matches.loc[matches['winner_id'] == player_id]
+
+    player2_matches_losses = matches.loc[matches['loser_id'] == player_id2]
+    player2_matches_wins = matches.loc[matches['winner_id'] == player_id2]
+    
+    if player_matches_wins/(player_matches_losses+player_matches_wins)> player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player,' wins!')
+    elif (player_matches_wins/player_matches_all) < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player2,' wins!')
+    else:
+        st.write('There is an equal probability of both winning!')
+
 
 def home():
     st.header('Home')
     st.text('Welcome to the homepage!')
-
+1
 def main():
     st.sidebar.title("Women's Tennis Association")
 
