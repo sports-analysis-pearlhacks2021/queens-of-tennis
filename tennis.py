@@ -147,27 +147,40 @@ def indiv_stats():
     #     height=500
     # )
     st.plotly_chart(fig)
+    st.subheader('Compare Player')
+    player2 = st.header(st.selectbox('Player Name', players['full_name']))
+    player_id2 = players.loc[players['full_name'] == player2, 'player_id'].iloc[0]
+    player2_matches_losses = matches.loc[matches['loser_id'] == player_id2]
+    player2_matches_wins = matches.loc[matches['winner_id'] == player_id2]
+    if matches_won/matches_all > player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player,' wins!')
+    elif (matches_won/matches_all) < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player2,' wins!')
+    else:
+        st.write('There is an equal probability of both winning!')
+
+    # st.table(matches_all)
 
 
-def overall_stats():
-    st.header('Overall Stats')
+def about():
+    st.write('# About Queens of Tennis')
+    st.write('...')
 
-def home():
-    st.header('Home')
-    st.write('Welcome to the homepage!')
+def compare():
+    st.write('# Compare Players')
 
 def main():
     st.sidebar.title("Women's Tennis Association")
 
-    nav = ['Individual', 'Overall', 'Home']
+    nav = ['About', 'Individual Player Stats', 'Compare Players']
     choice = st.sidebar.selectbox('Navigation', nav)
     
-    if choice == 'Individual':
+    if choice == 'Individual Player Stats':
         indiv_stats()
-    elif choice == 'Overall':
-        overall_stats()
-    elif choice == 'Home':
-        home()
+    elif choice == 'Compare Players':
+        compare()
+    elif choice == 'About':
+        about()
 
 
 main() 
