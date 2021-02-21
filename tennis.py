@@ -44,8 +44,6 @@ def indiv_stats():
 
     col1, col2 = st.beta_columns(2)
 
-    
-
     col1.markdown(f'**Country**: {country}')
     col1.markdown(f'**DOB**: {dob}')
     col1.markdown(f'**Hand**: {hand}')
@@ -170,6 +168,7 @@ def about():
     st.write("This is a project web-app that displays a collection of Women's Tennis players' data visually. It aims to help ease an audience into consuming the information, rather than looking purely at a wall of numbers.")
     st.write("The sports is an industry that is still largely male-dominated. Information that’s available for Women’s Sports is currently still very limited and is often only available in a format that is not user-friendly. This discourages prospective fans from learning more about the game (Gibbs, L. (2020, May 27). Sexism in statistics is hurting women's sports. Retrieved from https://www.powerplays.news/p/sexism-in-statistics-is-hurting-womens).")
     st.write("In honor of Pearl Hacks' mission of celebrating and uplifting women, this project aims to better serve and empower women, specifically those in the sports industry.")
+
 
 def compare():
     st.write('# Compare Players')
