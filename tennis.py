@@ -1,10 +1,12 @@
 import pandas as pd 
 import streamlit as st 
 import matplotlib.pyplot as plt
-# import seaborn as sns
+import seaborn as sns
+import plotly.express as px
 
-# import plotly.graph_objects as go
-# from plotly import graph_objs as go
+
+import plotly.graph_objects as go
+from plotly import graph_objs as go
 
 # from streamlit_echarts import st_echarts
 
@@ -76,6 +78,34 @@ def highlight_wins(x):
         return ['background-color: white']*13
 
 
+
+# BoxPlot distribution
+def boxplot():
+    matches = pd.read_csv('./data/matches.csv', encoding="ISO-8859-1")
+    fig = px.box(matches, x = "tourney_name", y = "winner_rank_points")
+    fig.update_traces(quartilemethod="exclusive")
+    st.plotly_chart(fig)
+
+
+# Count Plot
+def count():
+    data = pd.read_csv('./data/matches.csv', encoding="ISO-8859-1")
+    fig = go.Figure()
+    dataa = data.groupby('tourney_name')
+    for name, group in dataa:
+        trace = go.Histogram()
+        trace.name = name
+        trace.x = group['winner_name']
+        fig.add_trace(trace)
+
+    fig.update_layout(
+        title_text = 'Total counts of Players Winning a match',
+        width=900,
+        height=500
+    )
+    st.plotly_chart(fig)
+
+
 # INDIVIDUAL PLAYER STATS
 def indiv_stats(): 
     st.header('Individual Player Stats')
@@ -125,6 +155,11 @@ def indiv_stats():
 
     clean_matches_all['Date'] = matches_all['tourney_date'].apply(parseDate)
     clean_matches_all['Date'] = pd.to_datetime(clean_matches_all['Date'])
+
+    boxplot()
+    count()
+
+    # st.table(player_matches_all)
 
     clean_matches_all['Tourney'] = matches_all['tourney_name']
     clean_matches_all['Level'] = matches_all['tourney_level']
@@ -186,5 +221,6 @@ def main():
         overall_stats()
     elif choice == 'Home':
         home()
+
 
 main() 
