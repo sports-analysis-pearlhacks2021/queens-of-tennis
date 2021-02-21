@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-
+import sklearn as sk
 
 import plotly.graph_objects as go
 from plotly import graph_objs as go
@@ -128,6 +128,18 @@ def indiv_stats():
 
     boxplot()
     count()
+
+    st.subheader('Compare Player')
+    player2 = st.header(st.selectbox('Player Name', players['full_name']))
+    player_id2 = players.loc[players['full_name'] == player2, 'player_id'].iloc[0]
+    player2_matches_losses = matches.loc[matches['loser_id'] == player_id2]
+    player2_matches_wins = matches.loc[matches['winner_id'] == player_id2]
+    if player_matches_wins/player_matches_all > player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player,' wins!')
+    else if player_matches_wins/player_matches_all < player2_matches_wins/(player2_matches_losses+player2_matches_wins):
+        st.write(player2,' wins!')
+    else:
+        st.write('There is an equal probability of both winning!')
 
     # st.table(player_matches_all)
 
