@@ -197,6 +197,9 @@ def compare_players():
        st.write('There is an equal probability of either player winning!')
  
 def main():
+   img = Image.open("./images/logo.png") 
+   st.sidebar.image(img) 
+
    st.sidebar.title("Queens of Tennis 👑")
  
    nav = ['About', 'Individual Player Stats', 'Calculate Winning Probability']
