@@ -6,7 +6,6 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly import graph_objs as go
-from pillow import Image 
  
 def parseDate(date):
    date = str(int(date))
@@ -159,8 +158,7 @@ def about():
    st.write("Collects available WTA data and displays it in a visual manner to make it less daunting to consume.")
    st.subheader('Created by')
    st.write('Sonali Joshi, Lacey Umamoto, Rakshaa Viswanathan, Nadia Yonata')
-   img = Image.open("./images/tennis.png") 
-   st.image(img) 
+   st.image("./images/tennis.png") 
  
 def compare_players():
    st.write('# Calculate Winning Probability')
@@ -197,8 +195,7 @@ def compare_players():
        st.write('There is an equal probability of either player winning!')
  
 def main():
-   img = Image.open("./images/logo.png") 
-   st.sidebar.image(img) 
+   st.sidebar.image("./images/logo.png") 
 
    st.sidebar.title("Queens of Tennis 👑")
  
