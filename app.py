@@ -6,7 +6,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly import graph_objs as go
-from PIL import Image 
+from pillow import Image 
  
 def parseDate(date):
    date = str(int(date))
