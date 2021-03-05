@@ -152,12 +152,12 @@ def indiv_stats():
  
 def about():
    st.write('# About Queens of Tennis')
-   st.write("This is a project web-app that displays a collection of Women's Tennis players' data visually. It aims to help ease an audience into consuming the information, rather than looking purely at a wall of numbers.")
-   st.write("The sports is an industry that is still largely male-dominated. Information that’s available for Women’s Sports is currently still very limited and is often only available in a format that is not user-friendly. This discourages prospective fans from learning more about the game (Gibbs, L. (2020, May 27). Sexism in statistics is hurting women's sports. Retrieved from https://www.powerplays.news/p/sexism-in-statistics-is-hurting-womens).")
+   st.write("This is a web app that displays a collection of Women's Tennis players' data visually. It aims to help ease an audience into consuming the information, rather than having them look purely at a wall of numbers.")
+   st.write("The sports industry is still largely male-dominated. Information that is available for women’s sports is currently still very limited and is often only available in a format that is not user-friendly. This discourages prospective fans from learning more about the game. Sexism in statistics is hurting women's sports.")
    st.write("In honor of Pearl Hacks' mission of celebrating and uplifting women, this project aims to better serve and empower women, specifically those in the sports industry.")
-   st.subheader('What this web-app does')
-   st.write("It collects available data and displays them in a visual manner to make it less daunting to consume.")
-   st.subheader('Team')
+   st.subheader('What this app does')
+   st.write("Collects available WTA data and displays it in a visual manner to make it less daunting to consume.")
+   st.subheader('Created by')
    st.write('Sonali Joshi, Lacey Umamoto, Rakshaa Viswanathan, Nadia Yonata')
    img = Image.open("./images/tennis.png") 
    st.image(img) 
